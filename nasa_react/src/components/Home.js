@@ -26,8 +26,8 @@ export default function Home() {
     return (
         <div className="container" >
             <h1>{msg}</h1>
-            <h6>{title}:</h6>
-            <ShowPicture mediaType={mediaType} url={url} width="700" height="400" />
+            <h6>{title ? `${title}:` : null }</h6>
+            {!url ?  null:<ShowPicture mediaType={mediaType} url={url} width="700" height="400" /> }
             <div className="row">
                 <div className="col-3"></div>
                 <p className="col-6 mt-2">{explanation}</p>

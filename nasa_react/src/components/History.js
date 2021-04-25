@@ -8,7 +8,7 @@ export default function History() {
     useEffect(async () => {
         try {
             const data = await pictureService.getHistory(localStorage.getItem("token"), "GET");
-            setPictures(data.history);
+            setPictures(data.history.reverse());
         } catch (err) {
             console.log("err", err);
         }
@@ -34,7 +34,7 @@ export default function History() {
                             <li className="list-group-item" key={single._id}>
                                 <div className="row">
                                     <div className="col-3">
-                                        <p className="row mb-5"><b>{`Date: ${single.date}`}</b></p>
+                                        <p className="row mb-5"><b>{`Date: ${new Date(single.date).toLocaleString("he-IL")}`}</b></p>
                                         <button className="btn btn-secondary d-flex align-items-end mt-5" onClick={(id) => { deletePicture(single._id) }}>Delete</button>
                                     </div>
                                     <div className="col-4">
